@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
+/*
+First iteration. Started out TDD then took over with my own design when I thought
+it needed more classes. Got out of hand. Not entirely happy with result.
+*/
 namespace BowlingKata
 {
     public class Game
@@ -18,7 +22,7 @@ namespace BowlingKata
 
         public void Roll(int i)
         {
-            CurrentFrame.Add(i);
+            CurrentFrame.AddRoll(i);
 
             if (CurrentFrame.Rolls[1] != null || i == 10)
             {
@@ -76,7 +80,7 @@ namespace BowlingKata
         public int Score => RollTotal + Bonus;
 
         private int _rollIndex;
-        public void Add(int i)
+        public void AddRoll(int i)
         {
             Rolls[_rollIndex] = i;
             _rollIndex++;
